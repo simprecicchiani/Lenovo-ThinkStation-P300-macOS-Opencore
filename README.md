@@ -111,10 +111,9 @@ Nothing to mention so far
 
 ## Thanks to
 
-All the hackintosh community, especially the guys on GitHub.
+The hackintosh community, especially the guys on GitHub.
 
-===
-### How much this desktop costs
+## How much this desktop costs
 
 * ThinkStation P300 configured as above: €89 (+€15 shipping)
 <img src="/Images/purchase.png" alt="ThinkStation P300" height="200">
