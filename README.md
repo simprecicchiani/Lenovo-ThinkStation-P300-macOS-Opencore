@@ -27,6 +27,7 @@
 * Storage: 500GB HDD
 * WLAN + Bluetooth: Fenvi FV-HB1200
 
+<img src="/Images/screenshot.png" alt="ThinkStation P300" height="500">
 
 ## What if I don't have this exact model?
 
