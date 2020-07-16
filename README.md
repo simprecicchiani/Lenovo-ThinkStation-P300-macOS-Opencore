@@ -112,15 +112,4 @@ Nothing to mention so far
 
 ## Thanks to
 
-The hackintosh community, especially the guys on GitHub.
-
-## How much this desktop costs
-
-* ThinkStation P300 configured as above: €89 (+€15 shipping)
-<img src="/Images/purchase.png" alt="ThinkStation P300" height=“150”>
-
-* PCIe Wireless card: €26
-<img src="/Images/fenvi.png" alt="ThinkStation P300" height=“100”>
-
-* _**total €130**, making it probably the cheapest iMac ever_
-
+The hackintosh community.
