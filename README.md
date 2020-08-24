@@ -253,8 +253,7 @@ Nothing to mention so far
 <details>  
 <summary><strong>Update tracker 🔄</strong></summary>
 
-- [x] safe to install macOS Catalina‌ 10.15.4 supplemental update
-
+I don't own this workstation anymore. This configuration will hardly be updated in the future. As is, it will probably support every Catalina's update without any problem.
 
 | Item | Version |
 | :--- | ---: |
