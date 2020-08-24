@@ -1,53 +1,82 @@
-# ThinkStation P300 macOS Catalina (OpenCore bootloader)
+# Lenovo ThinkStation P300 running macOS (OpenCore bootloader)
 
-<img src="/Images/p300.png" alt="ThinkStation P300" height="500">
+<img align="right" src="/Images/p300.png" alt="Lenovo ThinkStation P300 macOS" width="300">
+
+[![macOS](https://img.shields.io/badge/macOS-Catalina_10.15.4-blue.svg)](https://support.apple.com/en-us/HT210642)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-green)](https://github.com/acidanthera/OpenCorePkg)
+[![MODEL](https://img.shields.io/badge/Model-30AH000RUS-lightgrey)](https://psref.lenovo.com/Product/ThinkStation/ThinkStation_P300_Tower)
+[![LICENSE](https://img.shields.io/badge/license-MIT-purple)](/LICENSE)
+
+**DISCLAIMER:**
+Read the entire README before you start. I am not responsible for any damages you may cause.
+
+Should you find an error, or improve anything, be it in the config itself or in the my documentation, please consider opening an issue or a pull request to contribute.
+
+Lastly, if you found my work useful please consider a PayPal donation, it would mean a lot to me.
+
+[![donate](https://img.shields.io/badge/-buy%20me%20a%20coffee-orange)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y5BE5HYACDERG&source=url)
 
 ## Introduction
 
-### General knowledge & credits
+<details>  
+<summary><strong>General knowledge & credits</strong></summary>
 
-* [Why OpenCore](https://dortania.github.io/OpenCore-Desktop-Guide/#advantages-of-opencore)
+- [Why OpenCore](https://dortania.github.io/OpenCore-Install-Guide/why-oc.html)
 
-- To install macOS follow the guides provided by [Dortania](https://dortania.github.io)
+- [Dortania's website](https://dortania.github.io)
 
-- Lots of SSDT patches from [OC-little](https://translate.google.it/translate?sl=zh-CN&tl=en&u=https%3A%2F%2Fgithub.com%2Fdaliansky%2FOC-little)
+- [SSDT patches from OC-little](https://translate.google.it/translate?sl=zh-CN&tl=en&u=https%3A%2F%2Fgithub.com%2Fdaliansky%2FOC-little)
 
-- Useful tools by [CorpNewt](https://github.com/corpnewt)
+- Useful tools by [@CorpNewt](https://github.com/corpnewt)
 
-- [Acidanthera](https://github.com/acidanthera) that make this possible
+- [Acidanthera's OpenCore and kexts development](https://github.com/acidanthera)
 
+</details>
 
-### My Hardware
+<details>  
+<summary><strong>My Hardware</strong></summary>
 
-* Model: ThinkStation P300 Tower - Type 30AH
-* Processor: Intel Core i5-4690 (4C, 2.5 / 3.9GHz, 6MB)
-* Graphics: Integrated Intel HD 4600
-* Memory: 2x4GB DDR3L 1600MHz
-* Sound Card: Realtek ALC662
-* Storage: 500GB HDD
-* WLAN + Bluetooth: Fenvi FV-HB1200
+| Product             | P300 Tower                         |
+|:--------------------|:-----------------------------------|
+| Model               | 30AH000RUS                         |
+| Region              | US                                 |
+| Machine Type        | 30AH                               |
+| Processor           | Core i5-4690 4C/3.5GHz/6MB/1600MHz |
+| Graphics            | Integrated Intel HD 4600           |
+| Memory              | 2x4GB 1600MHz non-ECC              |
+| Discrete graphics   | Open                               |
+| WLAN + Bluetooth    | Fenvi FV-HB1200                    |
+| Sound Card          | Realtek ALC662                     |
+| Internal disk drive | 1x1TB 3.5" SATA6Gbs 7.2K           |
+| Optical             | DVD±RW                             |
+| Media Reader        | Yes                                |
+| Power supply        | 280W 85%                           |
 
-<img src="/Images/screenshot.png" alt="ThinkStation P300" height="500">
+</details>
 
-## What if I don't have this exact model?
+<details>  
+<summary><strong>Hardware compatibility</strong></summary>
 
+This EFI will suit any P300 regardless of CPU model<sup>[1](#CPU)</sup> / RAM amount / Storage drive (SATA or NVMe<sup>[2](#NVMe)</sup>).
 
-This EFI will suit any P300 regardless of CPU model[^1] / RAM amount / Storage drive (HDD or SSD[^2]).
+<a name="CPU">1</a>: Follow CPU Power Management guide
 
-[^1]: custom power management SSDT needed
+<a name="NVMe">2</a>: Some NVMe drives may not work OOTB with MacOS, [NVMeFix](https://github.com/acidanthera/NVMeFix) could resolve some issues.
 
-[^2]: Some NVMe drives may not work OOTB with MacOS, do your own researches
+</details>
 
-## Recommended changes
+## Installation
 
-### USB ports map
+<details>  
+<summary><strong>How to install macOS</strong></summary>
 
-USBMap.kext is used to map needed ports. If you need a different configuration follow [USBMap guide](https://github.com/corpnewt/USBMap)
+- Download [EFI folder](/EFI/)
+- Follow [Dortania's guide](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html)
 
-### CPU Power Management
-If you happen to have a different CPU model **remove CPUFriend.kext and replace SSDT-CPUD with plain SSDT-PLUG**, power management is natively supported by OpenCore anyway. If you want to take a step forward and create a custom profile, follow [CPUFriendFriend guide](https://github.com/corpnewt/CPUFriendFriend)
+</details>
 
-## Bios settings (to do)
+<details>  
+<summary><strong>BIOS Settings</strong></summary>
 
 * `Security` > `Security Chip` > **Disable**
 * `Security` > `Virtualization` > `Intel Virtualization Technology` > **Enable**
@@ -59,7 +88,133 @@ If you happen to have a different CPU model **remove CPUFriend.kext and replace 
 * `Startup` > `CSM Support` > **No**
 * `Startup` > `Boot Mode` > **Quick**
 
-## What's working ✔️
+</details>
+
+## Post-install
+
+<details>  
+<summary><strong>USB ports mapping</strong></summary>
+
+USBMap.kext is used to map needed ports. If you need a different configuration follow [USBMap guide](https://github.com/corpnewt/USBMap)
+
+</details>
+
+<details>  
+<summary><strong>Custom CPU Power Management</strong></summary>
+
+If you happen to have a different CPU model **remove CPUFriend.kext and replace SSDT-CPUD with plain SSDT-PLUG**, power management is natively supported by OpenCore anyway. If you want to take a step forward and create a custom profile, follow these steps:
+
+- Run the following command in Terminal:
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend.sh)"
+```
+
+- Copy `CPUFriend.kext` and `CPUFriendDataProvider.kext` from desktop to `/OC/Kexts/`.
+
+- Open `/OC/config.plist` and add the following code:
+
+```xml
+<dict>
+    <key>BundlePath</key>
+    <string>CPUFriend.kext</string>
+    <key>Comment</key>
+    <string>Power management data injector</string>
+    <key>Enabled</key>
+    <true/>
+    <key>ExecutablePath</key>
+    <string>Contents/MacOS/CPUFriend</string>
+    <key>MaxKernel</key>
+    <string></string>
+    <key>MinKernel</key>
+    <string></string>
+    <key>PlistPath</key>
+    <string>Contents/Info.plist</string>
+</dict>
+<dict>
+    <key>BundlePath</key>
+    <string>CPUFriendDataProvider.kext</string>
+    <key>Comment</key>
+    <string>Power management data</string>
+    <key>Enabled</key>
+    <true/>
+    <key>ExecutablePath</key>
+    <string></string>
+    <key>MaxKernel</key>
+    <string></string>
+    <key>MinKernel</key>
+    <string></string>
+    <key>PlistPath</key>
+    <string>Contents/Info.plist</string>
+</dict>
+```
+
+</details>
+
+<details>  
+<summary><strong>Enable Apple Services</strong></summary>
+
+- Do the following one line at a time in Terminal:
+
+```bash
+$ git clone https://github.com/corpnewt/GenSMBIOS
+$ cd GenSMBIOS
+$ chmod +x GenSMBIOS.command
+```
+
+- Run with either `./GenSMBIOS.command` or by double-clicking *GenSMBIOS.command*
+
+- Type `iMac15,1 10`
+
+- Add the last results to `PlatformInfo > Generic > MLB, SystemSerialNumber and SystemUUID`
+
+</details>
+
+<details>  
+<summary><strong>Enable HiDPI</strong></summary>
+
+- Disable SIP (just for this process, you can enable it once finished)
+
+- Run this script in Terminal
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"
+```
+
+</details>
+
+## Other tweaks
+
+<details>  
+<summary><strong>Monitor temperatures and power consumption</strong></summary>
+
+- Download and install [HWMonitor](https://github.com/kzlekk/HWSensors/releases)
+- Open the app and check `launch on login` option
+
+</details> 
+
+<details>  
+<summary><strong>Faster macOS dock animation</strong></summary>
+
+- Run these lines in terminal:
+
+```bash
+$ defaults write com.apple.dock autohide-delay -float 0
+$ defaults write com.apple.dock autohide-time-modifier -float 0.5
+$ killall Dock
+```
+</details>
+
+<details>  
+<summary><strong>Mac Bootloader GUI and Boot Chime</strong></summary>
+
+- Follow the appropriate [Guide](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencore-s-gui).
+
+</details>
+
+## Status
+<details>  
+<summary><strong>What's working ✅</strong></summary>
 
 - [x] CPU Power Management
 
@@ -85,12 +240,18 @@ If you happen to have a different CPU model **remove CPUFriend.kext and replace 
 
 - [x] SD Card Reader
 
+</details>
 
-## What's not working ⚠️
+<details>  
+<summary><strong>What's not working ⚠️</strong></summary>
+
 
 Nothing to mention so far
 
-## Update tracker 🔄
+</details>
+
+<details>  
+<summary><strong>Update tracker 🔄</strong></summary>
 
 - [x] safe to install macOS Catalina‌ 10.15.4 supplemental update
 
@@ -105,11 +266,16 @@ Nothing to mention so far
 | AppleALC | 1.4.9 |
 | IntelMausi | 1.0.2 |
 
+</details>
 
-## If you found my work useful please consider a PayPal donation
+<details>  
+<summary><strong>Changelog</strong></summary>
 
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y5BE5HYACDERG&source=url" target="_blank"><img src="/Images/buymeacoffee.png" alt="Buy Me A Coffee" width="300" ></a>
+- 20200824:  
+New README for improved readability
+
+</details>
 
 ## Thanks to
 
-The hackintosh community.
+The hackintosh community from GitHub, [InsanelyMac](https://www.insanelymac.com/forum/) and [r/hackintosh](https://www.reddit.com/r/hackintosh/).
